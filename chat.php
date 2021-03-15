@@ -1,0 +1,45 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+session_start();
+if (!isset($_SESSION['unique_id'])) {
+    header("location: login.php");
+}
+?>
+<?php include_once "headers.php";?>
+
+<body>
+<div class="wrapper">
+    <section class="chat-container">
+        <header>
+            <?php
+                include_once "php/config.php";
+                $user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
+                $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$user_id}");
+                if(mysqli_num_rows($sql) > 0){
+                    $row = mysqli_fetch_assoc($sql);
+                }
+            ?>
+            <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+            <img src="php/images/<?php echo $row['profilePhoto']?>" alt="">
+            <div class="details">
+                <span><?php echo $row['firstName'] . " " . $row['lastName']?></span>
+                <p>Active Now</p>
+            </div>
+        </header>
+        <div class="messageList">
+
+        </div>
+        <form action="#" class="typing">
+            <input type="text" name="out_id" value="<?php echo $_SESSION['unique_id']; ?> " hidden>
+            <input type="text" name="in_id" value="<?php echo $user_id; ?> " hidden>
+
+            <input type="text" name="message" class="input" placeholder="Type a message..." autocomplete="off">
+            <button><i class="fab fa-telegram-plane"></i></button>
+        </form>
+    </section>
+</div>
+
+<script src="javascript/chat.js"></script>
+</body>
+</html>
