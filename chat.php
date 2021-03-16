@@ -24,7 +24,7 @@ if (!isset($_SESSION['unique_id'])) {
             <img src="php/images/<?php echo $row['profilePhoto']?>" alt="">
             <div class="details">
                 <span><?php echo $row['firstName'] . " " . $row['lastName']?></span>
-                <p>Active Now</p>
+                <p><?php echo $row['status']?></p>
             </div>
         </header>
         <div class="messageList">

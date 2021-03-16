@@ -128,7 +128,7 @@ body {
     position: relative;
 }
 
-.users header, .user-list a {
+.users header{
     display: flex;
     align-items: center;
     padding-bottom: 15px;
@@ -138,10 +138,10 @@ body {
 
 .wrapper img {
     object-fit: cover;
-    border-radius: 50%;
+    border-radius:15px;
 }
 
-.users .content, .user-list .content {
+.users .content {
     display: flex;
     align-items: center;
 }
@@ -151,14 +151,12 @@ body {
     width: 50px;
 }
 
-.users .details, .user-list .details {
+.users .details{
     color: #000000;
     margin-left: 15px;
 }
 
-.user-list span {
-    font-size: 18px;
-}
+
 
 .users header .details span {
     font-size: 25px;
@@ -207,28 +205,48 @@ body {
 
 
 .user-list {
-    max-height: 50vh;
+    max-height: 75%;
      overflow-y: auto;
+     display: flex;
+     flex-wrap: wrap;
+
+}
+.user-list .user-card{
+    position: relative;
+    flex-basis: calc(33.333% - 10px);
+    margin: 5px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
 }
 
-.user-list a {
-    padding-top: 10px;
-    page-break-after: 10px;
-    padding-right: 15px;
-    border-bottom-color: #f1f1f1;
+.user-list .user-card::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+  
+.user-list .user-card span{
+    position:absolute;
 }
 
-.user-list a:last-child {
-    border: none;
+.user-list .content{
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 100%;
+    background-size:cover;
+    background-repeat:no-repeat;
+    display: flex;               /* added for centered text */
+    justify-content: center;     /* added for centered text */
+    align-items: center;  
+    border-radius:15px;
+
 }
 
-.user-list .content img {
-    height: 45px;
-    width: 45px;
-}
 
-.user-list p {
-    color: #66666a;
+.user-list a{
+    color:#242424;
+    padding-top: 5px;
 }
 
 .status-dot {

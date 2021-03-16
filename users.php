@@ -22,7 +22,7 @@ if (mysqli_num_rows($sql) > 0) {
          <div class="content">
             <img src="php/images/<?php echo $row['profilePhoto'] ?>" alt="">
             <div class="details">
-                <span>Messages</span>     
+                <span><?php echo $row['firstName'] ?></span>     
             </div>
          </div>
          <a href="php/logout.php" class="logout">Logout</a>
